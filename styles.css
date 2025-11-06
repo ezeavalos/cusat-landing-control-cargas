@@ -55,7 +55,7 @@ nav a:hover{color:var(--cusat-blue)}
 .card p{margin:0;color:#3e3e45}
 
 /* Footer */
-footer{border-top:1px solid #ececf2;color:var(--cusat-gray);padding:28px 0;font-size:.95rem}
+footer .container > div:last-child { display: none !important; }
 
 /* Responsive */
 @media (max-width: 960px){
