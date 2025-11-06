@@ -3,251 +3,245 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>CUSAT | Sistema de Gestión de Cargas (Control de Cargas)</title>
-
-  <!-- SEO -->
+  <title>CUSAT | Sistema de Gestión de Cargas</title>
   <meta name="description" content="Tecnología, trazabilidad y control al servicio de su logística. Plataforma 24/7 con alertas, auditoría y evidencia digital certificada." />
-  <link rel="icon" href="/assets/logo-cusat.png" />
 
   <!-- Open Graph -->
   <meta property="og:title" content="CUSAT | Sistema de Gestión de Cargas" />
-  <meta property="og:description" content="Visibilidad total en tiempo real, reacción inmediata y cumplimiento normativo para su operación logística." />
+  <meta property="og:description" content="Visibilidad en tiempo real, reacción inmediata y cumplimiento normativo para su operación logística." />
   <meta property="og:type" content="website" />
-  <meta property="og:image" content="https://landing.cusat.com.py/assets/hero-cargas.jpg" />
-  <meta property="og:url" content="https://landing.cusat.com.py" />
+  <meta property="og:image" content="assets/hero-cargas.jpg" />
 
-  <!-- (Opcional) LinkedIn Insight Tag → reemplazá REEMPLAZAR_PARTNER_ID por tu ID -->
-  <!--
-  <script type="text/javascript">
-    _linkedin_partner_id = "REEMPLAZAR_PARTNER_ID";
-    window._linkedin_data_partner_ids = window._linkedin_data_partner_ids || [];
-    window._linkedin_data_partner_ids.push(_linkedin_partner_id);
-  </script>
-  <script type="text/javascript">
-    (function(){var s=document.getElementsByTagName("script")[0];
-      var b=document.createElement("script"); b.type="text/javascript"; b.async=true;
-      b.src="https://snap.licdn.com/li.lms-analytics/insight.min.js";
-      s.parentNode.insertBefore(b,s);})();
-  </script>
-  <noscript>
-    <img height="1" width="1" style="display:none" alt=""
-         src="https://px.ads.linkedin.com/collect/?pid=REEMPLAZAR_PARTNER_ID&fmt=gif" />
-  </noscript>
-  -->
-
+  <!-- Brand CSS (colores CUSAT) -->
   <style>
     :root{
-      --brand-blue:#0c5ba8;
-      --brand-orange:#f39433;
-      --brand-gray:#706f6f;
-      --text:#1a1a1a;
-      --bg:#f7f9fc;
+      --cusat-blue:#0c5ba8;
+      --cusat-orange:#f39433;
+      --cusat-gray:#706f6f;
+      --bg:#f6f8fb;
+      --text:#1b1b1f;
+      --card:#ffffff;
       --radius:16px;
-      --maxw:1160px;
     }
     *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
-    body{
-      margin:0; color:var(--text); background:var(--bg);
-      font-family:-apple-system,BlinkMacSystemFont,"Avenir Next","Inter","Segoe UI",Roboto,Helvetica,Arial,sans-serif;
-      line-height:1.45;
-    }
-    .container{width:100%; max-width:var(--maxw); margin:0 auto; padding:0 20px}
-    /* Header */
-    .navbar{position:sticky;top:0;z-index:50;background:#fff;border-bottom:1px solid #e8edf3}
-    .logo{display:flex;align-items:center;gap:.6rem;text-decoration:none}
-    .logo img{height:36px}
-    nav.main a{color:var(--brand-blue);font-weight:600;text-decoration:none}
-    nav.main{display:flex;gap:18px}
-    .btn{border-radius:999px;padding:.72rem 1.1rem;border:1px solid transparent;font-weight:700;display:inline-block}
-    .btn-primary{background:var(--brand-blue);color:#fff}
-    .btn-primary:hover{opacity:.92}
-    .btn-secondary{background:#fff;color:var(--brand-blue);border-color:var(--brand-blue)}
-    .badge{background:#e8f1fb;color:var(--brand-blue);border-radius:999px;padding:.35rem .7rem;font-weight:600;display:inline-block}
-    h1{font-size:clamp(34px,4.2vw,56px); line-height:1.06; letter-spacing:-.02em; margin:.35rem 0 1rem}
-    h2{font-size:clamp(24px,3vw,34px); margin:0 0 .6rem}
-    p.lead{font-size:1.125rem;color:#2b2b2b}
+    html,body{margin:0;padding:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Ubuntu,"Helvetica Neue",Arial,sans-serif;color:var(--text);background:var(--bg)}
+    a{color:var(--cusat-blue);text-decoration:none}
+    img{max-width:100%;height:auto;display:block}
+
+    .container{width:min(1120px,92%);margin:auto}
+    header.navbar{background:var(--card);border-bottom:1px solid #e7e7e9;position:sticky;top:0;z-index:100}
+    header .inner{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 0}
+    .brand{display:flex;align-items:center;gap:12px}
+    .brand img{height:40px;width:auto}
+    .brand .title{line-height:1}
+    .brand .title strong{color:var(--cusat-blue);letter-spacing:.5px}
+    .brand .title small{color:var(--cusat-gray);font-weight:600}
+
+    nav a{margin-left:16px;color:#333;font-weight:600}
+    nav a:hover{color:var(--cusat-blue)}
+    .btn{display:inline-flex;align-items:center;justify-content:center;font-weight:700;border-radius:999px;padding:.75rem 1.1rem;border:2px solid transparent;transition:transform .05s ease}
+    .btn:active{transform:translateY(1px)}
+    .btn-primary{background:var(--cusat-blue);color:#fff}
+    .btn-primary:hover{filter:brightness(1.05)}
+    .btn-secondary{background:#fff;color:var(--cusat-blue);border-color:var(--cusat-blue)}
+    .chip{display:inline-flex;align-items:center;background:#eef4fb;border:1px solid #d9e7fb;border-radius:999px;color:#2d5ea8;padding:.35rem .6rem;font-size:.85rem;margin:.2rem .35rem .2rem 0}
+
     /* Hero */
-    .hero{display:grid;grid-template-columns:1.05fr .95fr;gap:2rem;align-items:center;padding:64px 0}
-    .hero img{width:100%;border-radius:var(--radius);box-shadow:0 10px 24px rgba(0,0,0,.06)}
-    .kpis{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px}
-    .kpi{background:#fff;border-radius:14px;padding:14px 16px;box-shadow:0 4px 14px rgba(0,0,0,.06)}
-    /* Secciones */
-    .section{padding:64px 0}
-    .grid-3{display:grid;gap:16px;grid-template-columns:repeat(3,1fr)}
-    .card{background:#fff;border-radius:14px;padding:18px;box-shadow:0 6px 16px rgba(0,0,0,.06)}
-    /* Footer */
-    .footer{background:#0b2e54;color:#bcd3ea}
-    .footer a{color:#bcd3ea}
+    .hero{background:linear-gradient(180deg,#f7faff 0%, #ffffff 100%);padding:40px 0 18px}
+    .hero-grid{display:grid;grid-template-columns:1.15fr .95fr;gap:28px;align-items:center}
+    .pretitle{display:inline-block;background:#ecf2fb;color:#2d5ea8;border-radius:999px;padding:.4rem .7rem;font-weight:700;margin-bottom:12px}
+    .h1{font-size:clamp(32px,4.2vw,54px);line-height:1.05;margin:0 0 10px;font-weight:900;letter-spacing:-.5px}
+    .lead{font-size:1.05rem;color:#333;max-width:56ch}
+    .hero-cta{display:flex;gap:12px;flex-wrap:wrap;margin:16px 0 6px}
+    .hero-card{background:var(--card);border:1px solid #e8e8ee;border-radius:var(--radius);padding:16px;box-shadow:0 10px 28px rgba(12,91,168,.06)}
+    .stat-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:12px}
+    .stat{background:var(--card);border:1px solid #ececf2;border-radius:14px;padding:14px}
+    .stat b{display:block;font-size:1.05rem}
+    .illust{border:1px dashed #d4d7dd;border-radius:var(--radius);overflow:hidden;min-height:320px;background:#fff}
+    .illust img{width:100%;height:100%;object-fit:cover}
+
+    /* Sección Calendly */
+    .section{padding:42px 0}
+    .section h2{font-size:clamp(26px,3.2vw,36px);margin:0 0 10px}
+    .section .lead{margin:0 0 10px}
+    #demo-calendly{min-width:320px;height:760px;border-radius:16px;overflow:hidden;background:#fff;box-shadow:0 10px 28px rgba(12,91,168,.08)}
+
+    /* Pilar cards */
+    .pillars{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+    .card{background:var(--card);border:1px solid #ececf2;border-radius:14px;padding:18px}
+    .card h3{margin:0 0 6px}
+    .card p{margin:0;color:#3e3e45}
+
+    footer{border-top:1px solid #ececf2;color:var(--cusat-gray);padding:28px 0;font-size:.95rem}
+
     /* Responsive */
-    @media (max-width:980px){
-      .hero{grid-template-columns:1fr;padding:40px 0}
-      nav.main{display:none}
+    @media (max-width: 960px){
+      .hero-grid{grid-template-columns:1fr;gap:18px}
+      .stat-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+      .pillars{grid-template-columns:1fr}
+      nav{display:none}
     }
   </style>
 </head>
 <body>
 
-  <!-- Header -->
-  <header class="navbar">
-    <div class="container" style="display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px 0;">
-      <a class="logo" href="/">
-        <img src="./assets/logo-cusat.png" alt="CUSAT" />
-        <div style="display:flex;flex-direction:column;line-height:1">
-          <strong style="color:#0c5ba8">CUSAT</strong>
-          <small style="color:#706f6f;font-weight:600">Logística Inteligente</small>
+  <!-- NAV -->
+  <header class="navbar" role="banner">
+    <div class="container inner">
+      <a class="brand" href="#top" aria-label="CUSAT - Logística Inteligente">
+        <!-- Logo con srcset para pantallas retina -->
+        <img
+          src="assets/logo-cusat.png"
+          srcset="assets/logo-cusat.png 1x, assets/logo-cusat@2x.png 2x"
+          alt="CUSAT" />
+        <div class="title">
+          <strong>CUSAT</strong><br />
+          <small>Logística Inteligente</small>
         </div>
       </a>
-      <nav class="main">
+      <nav aria-label="principal">
         <a href="#pilares">Pilares</a>
-        <a href="#plataforma">Plataforma</a>
-        <a href="#industrias">Industrias</a>
+        <a href="#demo">Agendar demo</a>
         <a href="#beneficios">Beneficios</a>
-        <a href="#contacto">Contacto</a>
       </nav>
-      <a class="btn btn-primary" href="mailto:ventas@cusat.com.py?subject=Demo%20Control%20de%20Cargas">Agendar demo</a>
+      <a class="btn btn-primary" href="#demo">Agendar demo</a>
     </div>
   </header>
 
-  <!-- Hero -->
-  <section class="hero container" id="hero">
-    <div>
-      <span class="badge">Sistema de Gestión de Cargas</span>
-      <h1>Tecnología, trazabilidad y control<br>al servicio de su logística</h1>
-      <p class="lead">
-        Visibilidad en tiempo real, evidencia digital certificada y reacción 24/7 ante eventos críticos.
-        Cumpla con normativas, reduzca pérdidas y mejore sus KPIs.
-      </p>
+  <!-- HERO -->
+  <section class="hero" id="top">
+    <div class="container hero-grid">
+      <div>
+        <span class="pretitle">Sistema de Gestión de Cargas</span>
+        <h1 class="h1">Tecnología, trazabilidad y control al servicio de su logística</h1>
+        <p class="lead">
+          Visibilidad en tiempo real, evidencia digital certificada y reacción 24/7 ante eventos críticos.
+          Cumpla con normativas, reduzca pérdidas y mejore sus KPIs.
+        </p>
 
-      <div style="display:flex;gap:12px;flex-wrap:wrap;margin:18px 0 6px">
-        <span class="badge">Precintos electrónicos</span>
-        <span class="badge">Alertas automatizadas</span>
-        <span class="badge">Cadena de frío</span>
-        <span class="badge">Bitácora digital</span>
+        <div class="hero-cta">
+          <a class="btn btn-primary" href="#demo">Agendar demo</a>
+          <a class="btn btn-secondary" target="_blank" rel="noopener"
+             href="https://wa.me/595981582492?text=Quiero%20agendar%20una%20demo%20de%20Control%20de%20Cargas">
+            WhatsApp Ventas
+          </a>
+        </div>
+
+        <div aria-label="etiquetas" style="margin-top:8px">
+          <span class="chip">Precintos electrónicos</span>
+          <span class="chip">Alertas automatizadas</span>
+          <span class="chip">Cadena de frío</span>
+          <span class="chip">Bitácora digital</span>
+        </div>
+
+        <div class="stat-grid" aria-label="capacidades">
+          <div class="stat"><b>24/7</b><span>Monitoreo y respuesta</span></div>
+          <div class="stat"><b>Tiempo real</b><span>Ubicación y estado</span></div>
+          <div class="stat"><b>Auditoría</b><span>Reportes y cumplimiento</span></div>
+        </div>
       </div>
 
-      <div style="display:flex;gap:12px;margin-top:16px;flex-wrap:wrap">
-        <a class="btn btn-primary" href="mailto:ventas@cusat.com.py?subject=Solicitar%20demostraci%C3%B3n%20Control%20de%20Cargas">
-          Solicitar demostración
-        </a>
-        <a class="btn btn-secondary" href="https://wa.me/5959XXXXXXXX?text=Quiero%20informaci%C3%B3n%20sobre%20Control%20de%20Cargas" target="_blank" rel="noopener">
+      <div class="hero-card">
+        <div class="illust">
+          <img src="assets/hero-cargas.jpg" alt="Plataforma CUSAT y precinto electrónico" />
+        </div>
+        <small style="display:block;margin-top:8px;color:var(--cusat-gray)">
+          *Integración con sensores GPS, MCCTV y temperatura.
+        </small>
+      </div>
+    </div>
+  </section>
+
+  <!-- PILARES -->
+  <section class="section" id="pilares">
+    <div class="container">
+      <h2>Pilares del Sistema de Gestión de Cargas</h2>
+      <div class="pillars">
+        <article class="card">
+          <h3>Excelencia Logística</h3>
+          <p>Rutas optimizadas, control de ventanas horarias y gestión de OT con trazabilidad completa.</p>
+        </article>
+        <article class="card">
+          <h3>Tecnología Avanzada</h3>
+          <p>IoT, lectura de precintos, ADAS/DMS, integraciones vía API y data en tiempo real.</p>
+        </article>
+        <article class="card">
+          <h3>Acción Inmediata</h3>
+          <p>Alertas configurables, reglas automáticas y evidencia para auditorías y reclamos.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- DEMO (Calendly) -->
+  <section class="section" id="demo" aria-label="Agenda de demostraciones">
+    <div class="container">
+      <h2>Agendar una demo</h2>
+      <p class="lead">Elegí el día y horario que te quede mejor. Te enviamos confirmación automática.</p>
+
+      <div style="display:flex;gap:12px;flex-wrap:wrap;margin:10px 0 18px">
+        <a class="btn btn-primary" href="#demo-calendly">Agendar ahora</a>
+        <a class="btn btn-secondary" target="_blank" rel="noopener"
+           href="https://wa.me/595981582492?text=Quiero%20agendar%20una%20demo%20de%20Control%20de%20Cargas">
           WhatsApp Ventas
         </a>
       </div>
 
-      <div class="kpis">
-        <div class="kpi"><strong>24/7</strong><br><small>Monitoreo y respuesta</small></div>
-        <div class="kpi"><strong>Tiempo real</strong><br><small>Ubicación y estado</small></div>
-        <div class="kpi"><strong>Auditoría</strong><br><small>Reportes y cumplimiento</small></div>
+      <!-- Calendly inline -->
+      <div id="demo-calendly"
+           class="calendly-inline-widget"
+           data-url="https://calendly.com/eze-avalos/relevamieto-de-informacion?hide_gdpr_banner=1">
       </div>
-    </div>
+      <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
 
-    <div>
-      <img src="./assets/hero-cargas.jpg" alt="Plataforma CUSAT y precinto electrónico" />
-      <small style="color:#706f6f;display:block;margin-top:8px;">
-        *Integración con sensores GPS, MCCTV y temperatura.
+      <small style="color:var(--cusat-gray);display:block;margin-top:10px">
+        *Si no encontrás un horario, escribinos por WhatsApp.
       </small>
     </div>
   </section>
 
-  <!-- Pilares -->
-  <section id="pilares" class="section">
+  <!-- BENEFICIOS -->
+  <section class="section" id="beneficios">
     <div class="container">
-      <h2>Pilares del Sistema de Gestión de Cargas</h2>
-      <div class="grid-3">
-        <div class="card">
-          <strong>Excelencia Logística</strong>
-          <p>Procesos claros, evidencia digital y métricas para decisiones más rápidas.</p>
-        </div>
-        <div class="card">
-          <strong>Tecnología Avanzada</strong>
-          <p>Precintos electrónicos, sensores y conectividad para trazabilidad integral.</p>
-        </div>
-        <div class="card">
-          <strong>Acción Inmediata</strong>
-          <p>Alertas automatizadas y respuesta 24/7 ante eventos críticos.</p>
-        </div>
+      <h2>Beneficios clave</h2>
+      <div class="pillars">
+        <article class="card">
+          <h3>Menos pérdidas</h3>
+          <p>Prevención de desvíos, aperturas no autorizadas y roturas en tránsito.</p>
+        </article>
+        <article class="card">
+          <h3>Compliance asegurado</h3>
+          <p>Bitácora digital y trazabilidad completa para auditorías y normativas.</p>
+        </article>
+        <article class="card">
+          <h3>Mejor servicio</h3>
+          <p>Visibilidad para tu cliente final, tiempos estimados y evidencias con un clic.</p>
+        </article>
       </div>
     </div>
   </section>
 
-  <!-- Plataforma -->
-  <section id="plataforma" class="section" style="background:#fff">
-    <div class="container">
-      <h2>Plataforma</h2>
-      <p class="lead">Tableros en tiempo real, auditoría, historial y reportes para control operativo y cumplimiento.</p>
-      <div class="grid-3">
-        <div class="card"><strong>Mapa y estado</strong><p>Ubicación, geocercas, rutas y estado de cada carga.</p></div>
-        <div class="card"><strong>Alertas</strong><p>Puerta abierta, desvíos, temperatura fuera de rango y más.</p></div>
-        <div class="card"><strong>Reportes</strong><p>Descargas CSV/PDF y evidencia digital certificada.</p></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Industrias -->
-  <section id="industrias" class="section">
-    <div class="container">
-      <h2>Industrias</h2>
-      <div class="grid-3">
-        <div class="card"><strong>Retail & eCommerce</strong><p>Reducción de mermas y mejora de OTIF.</p></div>
-        <div class="card"><strong>Agro & Alimentos</strong><p>Cadena de frío y control de integridad end-to-end.</p></div>
-        <div class="card"><strong>Pharma</strong><p>Condiciones controladas y trazabilidad para auditorías.</p></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Beneficios -->
-  <section id="beneficios" class="section" style="background:#fff">
-    <div class="container">
-      <h2>Beneficios</h2>
-      <div class="grid-3">
-        <div class="card"><strong>Menos pérdidas</strong><p>Prevención con alertas y evidencia para reclamos.</p></div>
-        <div class="card"><strong>Más cumplimiento</strong><p>Soporte a normativas y auditorías con bitácora digital.</p></div>
-        <div class="card"><strong>Mejor servicio</strong><p>KPIs claros para mejorar puntualidad y experiencia.</p></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Contacto / HubSpot -->
-  <section id="contacto" class="section">
-    <div class="container">
-      <h2>Solicitar información</h2>
-      <p class="lead">Dejanos tus datos y un asesor te contactará.</p>
-
-      <!-- Reemplazar por el embed de HubSpot cuando lo tengas -->
-      <!--
-      <div id="hs-form-cusat"></div>
-      <script src="//js.hsforms.net/forms/embed/v2.js"></script>
-      <script>
-        hbspt.forms.create({
-          region: "na1",
-          portalId: "TU_PORTAL_ID",
-          formId: "TU_FORM_ID",
-          target: "#hs-form-cusat",
-        });
-      </script>
-      -->
-
-      <!-- CTA alternativas mientras tanto -->
-      <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:10px">
-        <a class="btn btn-primary" href="mailto:ventas@cusat.com.py?subject=Quiero%20informaci%C3%B3n%20Control%20de%20Cargas">Escribir por email</a>
-        <a class="btn btn-secondary" href="https://wa.me/5959XXXXXXXX?text=Quiero%20informaci%C3%B3n%20sobre%20Control%20de%20Cargas" target="_blank" rel="noopener">Escribir por WhatsApp</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="container" style="display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;padding:28px 0;">
-      <div>© <span id="y"></span> CUSAT — Logística Inteligente</div>
-      <div style="display:flex;gap:16px">
-        <a href="#pilares">Pilares</a>
-        <a href="#plataforma">Plataforma</a>
-        <a href="#contacto">Contacto</a>
-      </div>
+  <footer role="contentinfo">
+    <div class="container" style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap">
+      <div>© <span id="y"></span> CUSAT. Todos los derechos reservados.</div>
+      <div style="color:#9aa0a6">Colores institucionales: Azul #0c5ba8 · Naranja #f39433 · Gris #706f6f</div>
     </div>
   </footer>
 
-  <script>document.getElementById('y').textContent=new Date().getFullYear();</script>
+  <!-- Inyectar UTMs al Calendly embed + año en footer -->
+  <script>
+    (function() {
+      var w = new URLSearchParams(location.search);
+      var utms = ['utm_source','utm_medium','utm_campaign','utm_term','utm_content'];
+      var base = 'https://calendly.com/eze-avalos/relevamieto-de-informacion?hide_gdpr_banner=1';
+      var p = [];
+      utms.forEach(function(k){ var v=w.get(k); if(v) p.push(k+'='+encodeURIComponent(v)); });
+      var url = base + (p.length ? '&' + p.join('&') : '');
+      var el = document.querySelector('#demo-calendly.calendly-inline-widget');
+      if (el) el.setAttribute('data-url', url);
+      document.getElementById('y').textContent = new Date().getFullYear();
+    })();
+  </script>
+
 </body>
 </html>
