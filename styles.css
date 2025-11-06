@@ -52,15 +52,4 @@ nav a:hover{color:var(--cusat-blue)}
 .pillars{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
 .card{background:var(--card);border:1px solid #ececf2;border-radius:14px;padding:18px}
 .card h3{margin:0 0 6px}
-.card p{margin:0;color:#3e3e45}
-
-/* Footer */
-footer{border-top:1px solid #ececf2;color:var(--cusat-gray);padding:28px 0;font-size:.95rem}
-
-/* Responsive */
-@media (max-width: 960px){
-  .hero-grid{grid-template-columns:1fr;gap:18px}
-  .stat-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .pillars{grid-template-columns:1fr}
-  nav{display:none}
-}
+.card p{margin:0;color:var(--cusat-gray)}
