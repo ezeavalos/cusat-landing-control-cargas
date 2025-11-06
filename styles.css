@@ -19,7 +19,7 @@ header .inner{display:flex;align-items:center;justify-content:space-between;gap:
 .brand img{height:40px;width:auto}
 .brand .title{line-height:1}
 .brand .title strong{color:var(--cusat-blue);letter-spacing:.5px}
-.brand .title small{color:varcusat-gray;font-weight:600}
+.brand .title small{color:var(--cusat-gray);font-weight:600}
 
 nav a{margin-left:16px;color:#333;font-weight:600}
 nav a:hover{color:var(--cusat-blue)}
