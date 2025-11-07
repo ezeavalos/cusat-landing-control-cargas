@@ -3,22 +3,17 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-
   <title>CUSAT | Sistema de Gestión de Cargas</title>
   <meta name="description" content="Tecnología, trazabilidad y control al servicio de su logística. Plataforma 24/7 con alertas, auditoría y evidencia digital certificada." />
 
-  <!-- Tema del navegador (mobile) -->
-  <meta name="theme-color" content="#0c5ba8" />
+  <!-- Open Graph -->
+  <meta property="og:title" content="CUSAT | Sistema de Gestión de Cargas" />
+  <meta property="og:description" content="Visibilidad en tiempo real, reacción inmediata y cumplimiento normativo para su operación logística." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://landing.cusat.com.py/assets/ChatGPT%20Image%206%20nov%202025%2C%2010_45_18.jpg" />
 
-  <!-- Favicon / PWA basics (sin redes sociales) -->
-  <link rel="icon" href="/assets/favicon.png" sizes="32x32" type="image/png" />
-  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
-
-  <!-- Preload del hero (mejora LCP); cambia a .webp si la subís -->
-  <link rel="preload" as="image" href="/assets/ChatGPT%20Image%206%20nov%202025%2C%2010_45_18.jpg" imagesizes="100vw" />
-
-  <!-- CSS -->
-  <link rel="stylesheet" href="/styles.css" />
+  <!-- CSS externo -->
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
@@ -26,7 +21,7 @@
   <header class="navbar" role="banner">
     <div class="container inner">
       <a class="brand" href="#top" aria-label="CUSAT - Logística Inteligente">
-        <img src="/assets/logo-cusat.png" alt="CUSAT" />
+        <img src="assets/logo-cusat.png" alt="CUSAT" />
         <div class="title">
           <strong>CUSAT</strong><br />
           <small>Logística Inteligente</small>
@@ -55,7 +50,6 @@
         <div class="hero-cta">
           <a class="btn btn-primary" href="#demo">Agendar demo</a>
           <a class="btn btn-secondary" target="_blank" rel="noopener"
-             aria-label="Abrir WhatsApp para agendar demo con CUSAT"
              href="https://wa.me/595981582492?text=Quiero%20agendar%20una%20demo%20de%20Control%20de%20Cargas">
             WhatsApp Ventas
           </a>
@@ -77,14 +71,11 @@
 
       <div class="hero-card">
         <div class="illust">
-          <!-- WebP (opcional) + fallback JPG con tu nombre exacto URL-encodeado -->
-          <picture>
-            <source srcset="/assets/hero-cargas.webp" type="image/webp" />
-            <img
-              src="/assets/ChatGPT%20Image%206%20nov%202025%2C%2010_45_18.jpg"
-              alt="Plataforma CUSAT y precinto electrónico"
-              loading="eager" fetchpriority="high" />
-          </picture>
+          <!-- IMPORTANTE: ruta URL-encodeada con comas y espacios escapados -->
+          <img
+            src="/assets/ChatGPT%20Image%206%20nov%202025%2C%2010_45_18.jpg"
+            alt="Plataforma CUSAT y precinto electrónico"
+            loading="eager" fetchpriority="high" />
         </div>
         <small style="display:block;margin-top:8px;color:var(--cusat-gray)">
           *Integración con sensores GPS, MCCTV y temperatura.
@@ -123,7 +114,6 @@
       <div style="display:flex;gap:12px;flex-wrap:wrap;margin:10px 0 18px">
         <a class="btn btn-primary" href="#demo-calendly">Agendar ahora</a>
         <a class="btn btn-secondary" target="_blank" rel="noopener"
-           aria-label="Abrir WhatsApp para agendar demo con CUSAT"
            href="https://wa.me/595981582492?text=Quiero%20agendar%20una%20demo%20de%20Control%20de%20Cargas">
           WhatsApp Ventas
         </a>
@@ -166,12 +156,23 @@
   <footer role="contentinfo">
     <div class="container" style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap">
       <div>© <span id="y"></span> CUSAT. Todos los derechos reservados.</div>
+      <!-- (se eliminó la leyenda de colores institucionales en pantalla) -->
     </div>
   </footer>
 
-  <!-- Año dinámico -->
+  <!-- Inyectar UTMs al Calendly embed + año en footer -->
   <script>
-    document.getElementById('y').textContent = new Date().getFullYear();
+    (function() {
+      var w = new URLSearchParams(location.search);
+      var utms = ['utm_source','utm_medium','utm_campaign','utm_term','utm_content'];
+      var base = 'https://calendly.com/eze-avalos/relevamieto-de-informacion?hide_gdpr_banner=1';
+      var p = [];
+      utms.forEach(function(k){ var v=w.get(k); if(v) p.push(k+'='+encodeURIComponent(v)); });
+      var url = base + (p.length ? '&' + p.join('&') : '');
+      var el = document.querySelector('#demo-calendly.calendly-inline-widget');
+      if (el) el.setAttribute('data-url', url);
+      document.getElementById('y').textContent = new Date().getFullYear();
+    })();
   </script>
 
 </body>
