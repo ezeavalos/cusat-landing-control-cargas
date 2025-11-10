@@ -10,9 +10,9 @@
   <meta property="og:title" content="CUSAT | Sistema de Gestión de Cargas" />
   <meta property="og:description" content="Visibilidad en tiempo real, reacción inmediata y cumplimiento normativo para su operación logística." />
   <meta property="og:type" content="website" />
-  <meta property="og:image" content="https://landing.cusat.com.py/assets/ChatGPT%20Image%206%20nov%202025%2C%2010_45_18.jpg" />
+  <meta property="og:image" content="assets/ChatGPT%20Image%206%20nov%202025,%2010_45_18.jpg" />
 
-  <!-- CSS -->
+  <link rel="preconnect" href="https://assets.calendly.com" crossorigin>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -21,7 +21,10 @@
   <header class="navbar" role="banner">
     <div class="container inner">
       <a class="brand" href="#top" aria-label="CUSAT - Logística Inteligente">
-        <img src="assets/logo-cusat.png" alt="CUSAT" />
+        <img
+          src="assets/logo-cusat.png"
+          srcset="assets/logo-cusat.png 1x, assets/logo-cusat.png 2x"
+          alt="CUSAT" />
         <div class="title">
           <strong>CUSAT</strong><br />
           <small>Logística Inteligente</small>
@@ -55,7 +58,7 @@
           </a>
         </div>
 
-        <div aria-label="etiquetas" style="margin-top:8px">
+        <div aria-label="etiquetas" class="chips">
           <span class="chip">Precintos electrónicos</span>
           <span class="chip">Alertas automatizadas</span>
           <span class="chip">Cadena de frío</span>
@@ -69,15 +72,15 @@
         </div>
       </div>
 
+      <!-- IMPORTANTE: wrapper + img con contain -->
       <div class="hero-card">
-        <div class="illust">
-          <!-- Ruta con espacios/coma escapados -->
+        <figure class="illust illust--contain">
           <img
-            src="/assets/ChatGPT%20Image%206%20nov%202025%2C%2010_45_18.jpg"
-            alt="Plataforma CUSAT y precinto electrónico"
-            loading="eager" fetchpriority="high" />
-        </div>
-        <small style="display:block;margin-top:8px;color:var(--cusat-gray)">
+            class="hero-img"
+            src="assets/ChatGPT%20Image%206%20nov%202025,%2010_45_18.jpg"
+            alt="Plataforma CUSAT y precinto electrónico" />
+        </figure>
+        <small class="caption">
           *Integración con sensores GPS, MCCTV y temperatura.
         </small>
       </div>
@@ -105,13 +108,13 @@
     </div>
   </section>
 
-  <!-- DEMO -->
+  <!-- DEMO (Calendly) -->
   <section class="section" id="demo" aria-label="Agenda de demostraciones">
     <div class="container">
       <h2>Agendar una demo</h2>
       <p class="lead">Elegí el día y horario que te quede mejor. Te enviamos confirmación automática.</p>
 
-      <div style="display:flex;gap:12px;flex-wrap:wrap;margin:10px 0 18px">
+      <div class="cta-row">
         <a class="btn btn-primary" href="#demo-calendly">Agendar ahora</a>
         <a class="btn btn-secondary" target="_blank" rel="noopener"
            href="https://wa.me/595981582492?text=Quiero%20agendar%20una%20demo%20de%20Control%20de%20Cargas">
@@ -119,15 +122,14 @@
         </a>
       </div>
 
+      <!-- Calendly inline -->
       <div id="demo-calendly"
            class="calendly-inline-widget"
            data-url="https://calendly.com/eze-avalos/relevamieto-de-informacion?hide_gdpr_banner=1">
       </div>
       <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
 
-      <small style="color:var(--cusat-gray);display:block;margin-top:10px">
-        *Si no encontrás un horario, escribinos por WhatsApp.
-      </small>
+      <small class="muted">*Si no encontrás un horario, escribinos por WhatsApp.</small>
     </div>
   </section>
 
@@ -153,11 +155,12 @@
   </section>
 
   <footer role="contentinfo">
-    <div class="container" style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap">
+    <div class="container footer-row">
       <div>© <span id="y"></span> CUSAT. Todos los derechos reservados.</div>
     </div>
   </footer>
 
+  <!-- UTMs Calendly + año -->
   <script>
     (function() {
       var w = new URLSearchParams(location.search);
