@@ -12,7 +12,7 @@
   <meta property="og:type" content="website" />
   <meta property="og:image" content="https://landing.cusat.com.py/assets/ChatGPT%20Image%206%20nov%202025%2C%2010_45_18.jpg" />
 
-  <!-- CSS externo -->
+  <!-- CSS -->
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -71,7 +71,7 @@
 
       <div class="hero-card">
         <div class="illust">
-          <!-- IMPORTANTE: ruta URL-encodeada con comas y espacios escapados -->
+          <!-- Ruta con espacios/coma escapados -->
           <img
             src="/assets/ChatGPT%20Image%206%20nov%202025%2C%2010_45_18.jpg"
             alt="Plataforma CUSAT y precinto electrónico"
@@ -105,7 +105,7 @@
     </div>
   </section>
 
-  <!-- DEMO (Calendly) -->
+  <!-- DEMO -->
   <section class="section" id="demo" aria-label="Agenda de demostraciones">
     <div class="container">
       <h2>Agendar una demo</h2>
@@ -119,7 +119,6 @@
         </a>
       </div>
 
-      <!-- Calendly inline -->
       <div id="demo-calendly"
            class="calendly-inline-widget"
            data-url="https://calendly.com/eze-avalos/relevamieto-de-informacion?hide_gdpr_banner=1">
@@ -156,11 +155,9 @@
   <footer role="contentinfo">
     <div class="container" style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap">
       <div>© <span id="y"></span> CUSAT. Todos los derechos reservados.</div>
-      <!-- (se eliminó la leyenda de colores institucionales en pantalla) -->
     </div>
   </footer>
 
-  <!-- Inyectar UTMs al Calendly embed + año en footer -->
   <script>
     (function() {
       var w = new URLSearchParams(location.search);
