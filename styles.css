@@ -1,6 +1,6 @@
 /* ===============================
    CUSAT – Landing: styles.css
-   Imagen de héroe con bordes + marco interno
+   Imagen de héroe con bordes + marco interno alineados
    =============================== */
 
 /* --------- Tokens de marca --------- */
@@ -13,8 +13,9 @@
   --text:#1b1b1f;
   --card:#ffffff;
 
-  --radius:16px;              /* radio general */
-  --radius-inner:20px;        /* radio del recuadro interno (imagen) */
+  --radius:16px;               /* radio general */
+  --radius-inner:20px;         /* radio del recuadro interno (imagen) */
+  --illust-gutter:8px;         /* grosor del borde interno/gutter */
   --shadow:0 10px 28px rgba(12,91,168,.06);
   --shadow-soft:0 8px 18px rgba(12,91,168,.05);
 }
@@ -92,42 +93,33 @@ nav a:hover{color:var(--cusat-blue)}
   border-radius:24px;
   padding:12px;
   box-shadow:var(--shadow);
-  overflow:hidden;                 /* garantiza que nada se salga de la tarjeta */
+  overflow:hidden;                 /* la tarjeta nunca “sangra” */
   display:flex; flex-direction:column;
 }
 
-/* Marco interno que recorta la imagen con esquinas redondeadas */
+/* Marco interno perfecto: gutter + radio alineado */
 .illust{
   position:relative;
-  margin:0; width:100%;
-  border-radius:var(--radius-inner);     /* curva visible */
-  overflow:hidden;                       /* recorta la imagen dentro */
+  width:100%;
+  margin:0;
+  border-radius:var(--radius-inner);     /* curva visible del marco */
+  overflow:hidden;                       /* recorta el contenido */
   background:#fff;
-  aspect-ratio:16 / 10;                  /* proporción estable del marco */
+  padding:var(--illust-gutter);          /* crea el borde interno real */
+  aspect-ratio:16 / 10;                  /* relación estable */
   max-height:460px;
-  border:none;                           /* sin borde duro */
+  box-shadow: inset 0 0 0 1px rgba(0,0,0,.06); /* línea sutil del borde interno */
 }
 
-/* Borde interno redondeado (marco suave) */
-.illust::after{
-  content:"";
-  position:absolute;
-  inset:0;
-  border-radius:inherit;
-  /* dos “strokes”: uno blanco suave y otro gris muy tenue */
-  box-shadow:
-    inset 0 0 0 8px rgba(255,255,255,.90),
-    inset 0 0 0 1px rgba(0,0,0,.06);
-  pointer-events:none;
-}
-
-/* La imagen hereda el radio y no puede sobresalir del marco */
+/* La imagen respeta exactamente el borde interno */
 .illust img,
 .hero-img{
-  display:block; width:100%; height:100%;
-  object-fit:contain;                    /* muestra la foto ENTERA */
+  width:100%; height:100%;
+  object-fit:contain;                    /* se ve TODA la imagen */
   object-position:center;
-  border-radius:inherit;                 /* esquinas redondeadas igual que el marco */
+  border-radius:calc(var(--radius-inner) - var(--illust-gutter));
+  /* Evita cualquier artefacto en esquinas en algunos navegadores */
+  -webkit-mask-image: -webkit-radial-gradient(white, black);
 }
 
 /* --------- Estadísticas --------- */
