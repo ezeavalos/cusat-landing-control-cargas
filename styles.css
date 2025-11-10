@@ -7,12 +7,21 @@
   --card:#ffffff;
   --radius:16px;
 }
+
 *{box-sizing:border-box}
-html,body{margin:0;padding:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Ubuntu,"Helvetica Neue",Arial,sans-serif;color:var(--text);background:var(--bg)}
+html,body{
+  margin:0;
+  padding:0;
+  font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Ubuntu,"Helvetica Neue",Arial,sans-serif;
+  color:var(--text);
+  background:var(--bg);
+}
 a{color:var(--cusat-blue);text-decoration:none}
 img{max-width:100%;height:auto;display:block}
 
 .container{width:min(1120px,92%);margin:auto}
+
+/* NAV */
 header.navbar{background:var(--card);border-bottom:1px solid #e7e7e9;position:sticky;top:0;z-index:100}
 header .inner{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 0}
 .brand{display:flex;align-items:center;gap:12px}
@@ -20,80 +29,84 @@ header .inner{display:flex;align-items:center;justify-content:space-between;gap:
 .brand .title{line-height:1}
 .brand .title strong{color:var(--cusat-blue);letter-spacing:.5px}
 .brand .title small{color:var(--cusat-gray);font-weight:600}
-
 nav a{margin-left:16px;color:#333;font-weight:600}
 nav a:hover{color:var(--cusat-blue)}
+
 .btn{display:inline-flex;align-items:center;justify-content:center;font-weight:700;border-radius:999px;padding:.75rem 1.1rem;border:2px solid transparent;transition:transform .05s ease}
 .btn:active{transform:translateY(1px)}
 .btn-primary{background:var(--cusat-blue);color:#fff}
 .btn-primary:hover{filter:brightness(1.05)}
 .btn-secondary{background:#fff;color:var(--cusat-blue);border-color:var(--cusat-blue)}
+
 .chip{display:inline-flex;align-items:center;background:#eef4fb;border:1px solid #d9e7fb;border-radius:999px;color:#2d5ea8;padding:.35rem .6rem;font-size:.85rem;margin:.2rem .35rem .2rem 0}
 
-/* Hero */
+/* HERO */
 .hero{background:linear-gradient(180deg,#f7faff 0%, #ffffff 100%);padding:40px 0 18px}
 .hero-grid{display:grid;grid-template-columns:1.15fr .95fr;gap:28px;align-items:center}
 .pretitle{display:inline-block;background:#ecf2fb;color:#2d5ea8;border-radius:999px;padding:.4rem .7rem;font-weight:700;margin-bottom:12px}
 .h1{font-size:clamp(32px,4.2vw,54px);line-height:1.05;margin:0 0 10px;font-weight:900;letter-spacing:-.5px}
 .lead{font-size:1.05rem;color:#333;max-width:56ch}
 .hero-cta{display:flex;gap:12px;flex-wrap:wrap;margin:16px 0 6px}
-.hero-card{background:var(--card);border:1px solid #e8e8ee;border-radius:var(--radius);padding:16px;box-shadow:0 10px 28px rgba(12,91,168,.06)}
+.chips{margin-top:8px}
 .stat-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:12px}
 .stat{background:var(--card);border:1px solid #ececf2;border-radius:14px;padding:14px}
 .stat b{display:block;font-size:1.05rem}
 
-/* Imagen héroe — alturas controladas por breakpoint */
-.illust{
-  border:1px dashed #d4d7dd;
+/* Tarjeta con imagen */
+.hero-card{
+  background:var(--card);
+  border:1px solid #e8e8ee;
   border-radius:var(--radius);
-  overflow:hidden;
-  background:#fff;
-  /* altura por defecto (desktop grande) */
-  height:420px;
-}
-.illust img{
-  width:100%;
-  height:100%;
-  /* rellena sin deformar */
-  object-fit:cover;
-  /* mueve el encuadre levemente hacia la derecha para destacar el camión */
-  object-position:65% center;
-  display:block;
-  image-rendering:auto;
+  padding:16px;
+  box-shadow:0 10px 28px rgba(12,91,168,.06);
 }
 
-/* Alturas responsivas del héroe */
-@media (max-width:1280px){
-  .illust{height:380px}
+/* Mostrar SIEMPRE toda la imagen (sin recortes) */
+.illust{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  width:100%;
+  border-radius:12px;
+  overflow:hidden;
+  background:#fff;
+  /* En vez de altura fija usamos relación de aspecto */
+  aspect-ratio: 16 / 10;         /* controla el alto */
+  max-height: 440px;             /* tope en desktop */
+  border:1px dashed #e6e9ee;
 }
-@media (max-width:1060px){
-  .illust{height:340px}
+.illust--contain img,
+.hero-img{
+  width:100%;
+  height:100%;
+  object-fit:contain;             /* <- sin recorte */
+  object-position:center center;  /* centrada */
 }
-/* Stack móvil */
-@media (max-width: 960px){
-  .hero-grid{grid-template-columns:1fr;gap:18px}
-  .stat-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .pillars{grid-template-columns:1fr}
-  nav{display:none}
-  .illust{height:280px}
-}
+
+/* Nota al pie de la tarjeta */
+.caption{display:block;margin-top:8px;color:var(--cusat-gray)}
 
 /* Secciones */
 .section{padding:42px 0}
 .section h2{font-size:clamp(26px,3.2vw,36px);margin:0 0 10px}
 .section .lead{margin:0 0 10px}
-
-/* Calendly */
-#demo-calendly{
-  min-width:320px;height:760px;border-radius:16px;overflow:hidden;background:#fff;
-  box-shadow:0 10px 28px rgba(12,91,168,.08)
-}
-
-/* Cards */
+.cta-row{display:flex;gap:12px;flex-wrap:wrap;margin:10px 0 18px}
+#demo-calendly{min-width:320px;height:760px;border-radius:16px;overflow:hidden;background:#fff;box-shadow:0 10px 28px rgba(12,91,168,.08)}
 .pillars{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
 .card{background:var(--card);border:1px solid #ececf2;border-radius:14px;padding:18px}
 .card h3{margin:0 0 6px}
 .card p{margin:0;color:#3e3e45}
+.muted{color:#7b7f86}
 
 /* Footer */
+.footer-row{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 footer{border-top:1px solid #ececf2;color:var(--cusat-gray);padding:28px 0;font-size:.95rem}
+
+/* Responsive */
+@media (max-width: 960px){
+  .hero-grid{grid-template-columns:1fr;gap:18px}
+  .stat-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .pillars{grid-template-columns:1fr}
+  nav{display:none}
+  .illust{aspect-ratio: 16 / 9; max-height:360px}
+}
