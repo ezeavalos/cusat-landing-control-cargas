@@ -1,5 +1,6 @@
 /* ===============================
    CUSAT – Landing: styles.css
+   Imagen de héroe con bordes + marco interno
    =============================== */
 
 /* --------- Tokens de marca --------- */
@@ -12,8 +13,8 @@
   --text:#1b1b1f;
   --card:#ffffff;
 
-  --radius:16px;
-  --radius-inner:20px;        /* radio redondeado del marco interno */
+  --radius:16px;              /* radio general */
+  --radius-inner:20px;        /* radio del recuadro interno (imagen) */
   --shadow:0 10px 28px rgba(12,91,168,.06);
   --shadow-soft:0 8px 18px rgba(12,91,168,.05);
 }
@@ -84,24 +85,40 @@ nav a:hover{color:var(--cusat-blue)}
 .lead{font-size:1.05rem; color:#333; max-width:56ch}
 .hero-cta{display:flex; gap:12px; flex-wrap:wrap; margin:16px 0 6px}
 
-/* --- Tarjeta con imagen (arreglos de redondeo) --- */
+/* --- Tarjeta con imagen --- */
 .hero-card{
-  background:var(--card); border:1px solid #e8e8ee; border-radius:24px;
-  padding:12px; box-shadow:var(--shadow);
-  overflow:hidden;                       /* recorta cualquier desborde */
+  background:var(--card);
+  border:1px solid #e8e8ee;
+  border-radius:24px;
+  padding:12px;
+  box-shadow:var(--shadow);
+  overflow:hidden;                 /* garantiza que nada se salga de la tarjeta */
   display:flex; flex-direction:column;
 }
 
 /* Marco interno que recorta la imagen con esquinas redondeadas */
 .illust{
+  position:relative;
   margin:0; width:100%;
-  border-radius:var(--radius-inner);     /* radio interno visible */
-  overflow:hidden;                       /* CLAVE: recorta la imagen dentro */
+  border-radius:var(--radius-inner);     /* curva visible */
+  overflow:hidden;                       /* recorta la imagen dentro */
   background:#fff;
   aspect-ratio:16 / 10;                  /* proporción estable del marco */
   max-height:460px;
-  /* quitamos bordes para que la curva quede limpia */
-  border:none;
+  border:none;                           /* sin borde duro */
+}
+
+/* Borde interno redondeado (marco suave) */
+.illust::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  border-radius:inherit;
+  /* dos “strokes”: uno blanco suave y otro gris muy tenue */
+  box-shadow:
+    inset 0 0 0 8px rgba(255,255,255,.90),
+    inset 0 0 0 1px rgba(0,0,0,.06);
+  pointer-events:none;
 }
 
 /* La imagen hereda el radio y no puede sobresalir del marco */
@@ -110,10 +127,10 @@ nav a:hover{color:var(--cusat-blue)}
   display:block; width:100%; height:100%;
   object-fit:contain;                    /* muestra la foto ENTERA */
   object-position:center;
-  border-radius:inherit;                 /* hereda la curva del padre */
+  border-radius:inherit;                 /* esquinas redondeadas igual que el marco */
 }
 
-/* --------- Estadísticas (debajo de chips) --------- */
+/* --------- Estadísticas --------- */
 .stat-grid{
   display:grid; grid-template-columns:repeat(3,minmax(0,1fr));
   gap:12px; margin-top:12px;
@@ -126,7 +143,7 @@ nav a:hover{color:var(--cusat-blue)}
 .section h2{font-size:clamp(26px,3.2vw,36px); margin:0 0 10px}
 .section .lead{margin:0 0 10px}
 
-/* Calendly embebido */
+/* Calendly embebido (opcional) */
 #demo-calendly{
   min-width:320px; height:760px; border-radius:16px; overflow:hidden;
   background:#fff; box-shadow:var(--shadow-soft);
